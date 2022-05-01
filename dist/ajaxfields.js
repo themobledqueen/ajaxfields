@@ -1,7 +1,7 @@
 (function (global, factory) {
 	typeof exports === 'object' && typeof module !== 'undefined' ? module.exports = factory() :
 	typeof define === 'function' && define.amd ? define(factory) :
-	(global.AJAXFIELDS = factory());
+	(global.Ajaxfields = factory());
 }(this, (function () { 'use strict';
 
 	/**
@@ -60,53 +60,53 @@
 	const AJAXFIELDS_STATE_ACTIVE = 4;
 	const AJAXFIELDS_STATE_PENDING_UPDATE = 5;
 	
-	var AJAXFIELDS = new _Group();
+	var Ajaxfields = new _Group();
 
-	AJAXFIELDS.Group = _Group;
-	AJAXFIELDS._nextId = 0;
-	AJAXFIELDS._baseURL = window.location.origin;
-	AJAXFIELDS._idKey = 'id';
-	AJAXFIELDS._fieldnameKey = 'fieldname';
-	AJAXFIELDS._valueKey = 'val';
-	AJAXFIELDS.nextId = function () {
-		return AJAXFIELDS._nextId++;
+	Ajaxfields.Group = _Group;
+	Ajaxfields._nextId = 0;
+	Ajaxfields._baseURL = window.location.origin;
+	Ajaxfields._idKey = 'id';
+	Ajaxfields._fieldnameKey = 'fieldname';
+	Ajaxfields._valueKey = 'val';
+	Ajaxfields.nextId = function () {
+		return Ajaxfields._nextId++;
 	};
 	
-	AJAXFIELDS.setBaseURL = function(e){
-		AJAXFIELDS._baseURL = e;
+	Ajaxfields.setBaseURL = function(e){
+		Ajaxfields._baseURL = e;
 	}
 	
-	AJAXFIELDS.setIdKey = function(e){
-		AJAXFIELDS._idKey = e;
+	Ajaxfields.setIdKey = function(e){
+		Ajaxfields._idKey = e;
 	}
 		
-	AJAXFIELDS.getIdKey = function(){
-		return AJAXFIELDS._idKey;
+	Ajaxfields.getIdKey = function(){
+		return Ajaxfields._idKey;
 	}
 	
-	AJAXFIELDS.setFieldnameKey = function(e){
-		AJAXFIELDS._fieldnameKey = e;
+	Ajaxfields.setFieldnameKey = function(e){
+		Ajaxfields._fieldnameKey = e;
 	}
 	
-	AJAXFIELDS.getFieldnameKey = function(){
-		return AJAXFIELDS._fieldnameServerKey;
+	Ajaxfields.getFieldnameKey = function(){
+		return Ajaxfields._fieldnameServerKey;
 	}
 	
-	AJAXFIELDS.setValueKey = function(e){
-		AJAXFIELDS._valueKey = e;
+	Ajaxfields.setValueKey = function(e){
+		Ajaxfields._valueKey = e;
 	}
 			
-	AJAXFIELDS.getValueKey = function(){
-		return AJAXFIELDS._valueKey;
+	Ajaxfields.getValueKey = function(){
+		return Ajaxfields._valueKey;
 	}
 	
-	AJAXFIELDS.baseURL = function(e){
+	Ajaxfields.baseURL = function(e){
 		console.log(e);
 		if (!this._baseURL) return e;
 		return this._baseURL+'/'+e;
 	}
 	
-	AJAXFIELDS.ghostInputCss = function(){
+	Ajaxfields.ghostInputCss = function(){
 		return {
 			'padding': 0,
 			'outline': 0,
@@ -115,8 +115,8 @@
 		};
 	}
 	
-	AJAXFIELDS._passwordString = "•••••••";
-	AJAXFIELDS._toggleElemCSS = {
+	Ajaxfields._passwordString = "•••••••";
+	Ajaxfields._toggleElemCSS = {
 		  'border': '2px solid #aaa',
 		  'width': '1.5em',
 		  'height': '1.5em',
@@ -128,22 +128,22 @@
 		  'color': '#fff',
 		  'background': '#fff'
 	};
-	AJAXFIELDS._checkmarkSVG = '<svg style="width: 1em;" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 17.837 17.837"><path d="M16.145,2.571c-0.272-0.273-0.718-0.273-0.99,0L6.92,10.804l-4.241-4.27 c-0.272-0.274-0.715-0.274-0.989,0L0.204,8.019c-0.272,0.271-0.272,0.717,0,0.99l6.217,6.258c0.272,0.271,0.715,0.271,0.99,0 L17.63,5.047c0.276-0.273,0.276-0.72,0-0.994L16.145,2.571z"/></svg>';
+	Ajaxfields._checkmarkSVG = '<svg style="width: 1em;" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 17.837 17.837"><path d="M16.145,2.571c-0.272-0.273-0.718-0.273-0.99,0L6.92,10.804l-4.241-4.27 c-0.272-0.274-0.715-0.274-0.989,0L0.204,8.019c-0.272,0.271-0.272,0.717,0,0.99l6.217,6.258c0.272,0.271,0.715,0.271,0.99,0 L17.63,5.047c0.276-0.273,0.276-0.72,0-0.994L16.145,2.571z"/></svg>';
 	
-	AJAXFIELDS.getToggleElem = function(){
-		var checkmarkElem = $(AJAXFIELDS._checkmarkSVG);
+	Ajaxfields.getToggleElem = function(){
+		var checkmarkElem = $(Ajaxfields._checkmarkSVG);
 		var toggleElem = $(document.createElement('div'));
 		toggleElem.addClass('ajaxfield_toggle');
-		toggleElem.css(AJAXFIELDS._toggleElemCSS);
+		toggleElem.css(Ajaxfields._toggleElemCSS);
 		toggleElem.append(checkmarkElem);
 		return toggleElem;
 	}
 	
-	AJAXFIELDS.$ = function (object) {
+	Ajaxfields.$ = function (object) {
 		return $(object);
 	};
 	
-	AJAXFIELDS.getAllTypes = function(type){
+	Ajaxfields.getAllTypes = function(type){
 		return [
 			AJAXFIELDS_TYPE_TEXT,
 			AJAXFIELDS_TYPE_TEXTAREA,
@@ -156,7 +156,7 @@
 		]
 	}
 	
-	AJAXFIELDS.cancelAllByState = function(state){
+	Ajaxfields.cancelAllByState = function(state){
 		var fields = this.getAll();
 		if (!Array.isArray(state)) state = [state];
 		for(var i in fields){
@@ -165,15 +165,15 @@
 		}
 	}
 	
-	AJAXFIELDS.cancelAllPending = function(){
+	Ajaxfields.cancelAllPending = function(){
 		this.cancelAllByState(AJAXFIELDS_STATE_PENDING_ACTIVE);
 	}
 	
-	AJAXFIELDS.cancelAllActiveOrPending = function(){
+	Ajaxfields.cancelAllActiveOrPending = function(){
 		this.cancelAllByState([AJAXFIELDS_STATE_ACTIVE, AJAXFIELDS_STATE_PENDING_ACTIVE]);
 	}
 	
-	AJAXFIELDS.parseType = function(type){
+	Ajaxfields.parseType = function(type){
 		if (['t', 'text'].includes(type)) return AJAXFIELDS_TYPE_TEXT;
 		if (['ta', 'textarea'].includes(type)) return AJAXFIELDS_TYPE_TEXTAREA;
 		if (['p', 'pass', 'password'].includes(type)) return AJAXFIELDS_TYPE_PASSWORD;
@@ -183,15 +183,15 @@
 		if (['time'].includes(type)) return AJAXFIELDS_TYPE_TIME;
 		if (['c', 'color'].includes(type)) return AJAXFIELDS_TYPE_COLOR;
 		if (['tog', 'toggle'].includes(type)) return AJAXFIELDS_TYPE_TOGGLE;
-		return AJAXFIELDS.getAllTypes().includes(parseInt(type)) ? parseInt(type) : false;
+		return Ajaxfields.getAllTypes().includes(parseInt(type)) ? parseInt(type) : false;
 	};
 	
-	AJAXFIELDS.configParam = function(key, config, default_value){
+	Ajaxfields.configParam = function(key, config, default_value){
 		if (typeof config !== 'object') return default_value;
 		return (config[key] !== undefined) ? config[key] : default_value;
 	}
 		
-	AJAXFIELDS.gatherData = function (object) {
+	Ajaxfields.gatherData = function (object) {
 		var elemData = object.data();
 		var fieldData = {};
 		for(var i in elemData){
@@ -207,7 +207,7 @@
 		return fieldData;
 	},
 	
-	AJAXFIELDS.getDefaults = function(){
+	Ajaxfields.getDefaults = function(){
 	
 		var genericResponseStatusCheckFn = function(response, field){
 			return (response[field.getResponseStatusKey()] == true);
@@ -228,37 +228,37 @@
 			group: undefined,
 			groupSelector: '[data-ajaxfield-group]',
 			id: undefined,
-			idKey: AJAXFIELDS.getIdKey(),
+			idKey: Ajaxfields.getIdKey(),
 			fieldname: undefined,
-			fieldnameKey: AJAXFIELDS.getFieldnameKey(),
-			valueKey: AJAXFIELDS.getValueKey(),
+			fieldnameKey: Ajaxfields.getFieldnameKey(),
+			valueKey: Ajaxfields.getValueKey(),
 			responseStatusCheckFunction: genericResponseStatusCheckFn
 		};
 		return defaults;
 	},
 	
-	AJAXFIELDS.field = function (object, config) {
-		this._id = AJAXFIELDS.nextId();
-		this._object = AJAXFIELDS.$(object);
+	Ajaxfields.field = function (object, config) {
+		this._id = Ajaxfields.nextId();
+		this._object = Ajaxfields.$(object);
 		this._config = config;
 		
 		this._callback = {};
-			this._callback.init = AJAXFIELDS.configParam('onInit', config, function(){});
-			this._callback.ready = AJAXFIELDS.configParam('onReady', config, function(){});
-			this._callback.success = AJAXFIELDS.configParam('onSuccess', config, function(){});
-			this._callback.error = AJAXFIELDS.configParam('onError', config, function(){});
-			this._callback.complete = AJAXFIELDS.configParam('onComplete', config, function(){});
+			this._callback.init = Ajaxfields.configParam('onInit', config, function(){});
+			this._callback.ready = Ajaxfields.configParam('onReady', config, function(){});
+			this._callback.success = Ajaxfields.configParam('onSuccess', config, function(){});
+			this._callback.error = Ajaxfields.configParam('onError', config, function(){});
+			this._callback.complete = Ajaxfields.configParam('onComplete', config, function(){});
 		
-		this._type = AJAXFIELDS.parseType(config.type);
+		this._type = Ajaxfields.parseType(config.type);
 		this._optionsCache;
 		this._lastInputValue;
 		this._state = AJAXFIELDS_STATE_NULL;
 		
 		this._init();
-		AJAXFIELDS.add(this);
+		Ajaxfields.add(this);
 	};
 	
-	AJAXFIELDS.field.prototype = {
+	Ajaxfields.field.prototype = {
 	
 		_getProp: function(prop, shallow){
 			var groupData = {};
@@ -266,18 +266,18 @@
 			if (!shallow){
 				group = this.getGroup();
 				if (group){
-					groupData = AJAXFIELDS.gatherData(group);
+					groupData = Ajaxfields.gatherData(group);
 				}
 			}
-			var propVal = AJAXFIELDS.configParam(
+			var propVal = Ajaxfields.configParam(
 				prop,
 				this._config,
-				AJAXFIELDS.configParam(
+				Ajaxfields.configParam(
 					prop,
 					groupData,
-					AJAXFIELDS.configParam(
+					Ajaxfields.configParam(
 						prop,
-						AJAXFIELDS.getDefaults(),
+						Ajaxfields.getDefaults(),
 						undefined
 					)
 				)
@@ -356,7 +356,7 @@
 		
 		getGroup: function(){
 			var group = this._group;
-			if (group) return AJAXFIELDS.$(group);
+			if (group) return Ajaxfields.$(group);
 			var selector = this.getGroupSelector();
 			if (!selector) return false;
 			group = this.getObject().closest(selector);
@@ -427,7 +427,7 @@
 		
 		getURL: function(){
 			var url = this._getProp('url');
-			return AJAXFIELDS.baseURL(url);
+			return Ajaxfields.baseURL(url);
 		},
 		
 		simulateResponse: function(){
@@ -513,7 +513,7 @@
 						obj.text(options[val]);
 					} else {
 						if (field.isPassword()){
-							obj.text(AJAXFIELDS._passwordString);
+							obj.text(Ajaxfields._passwordString);
 						} else {
 							if (field.isToggle()){
 								field.updateToggleElem(val);
@@ -671,7 +671,7 @@
 						}
 						
 						if (field.isGhostInput()){
-							inputElem.css(AJAXFIELDS.ghostInputCss());
+							inputElem.css(Ajaxfields.ghostInputCss());
 						}
 						
 						if (field.isSelect()){
@@ -809,7 +809,7 @@
 			var field = this;
 			var inputWrapPromise = field.createInputWrapElem();
 			var canceledStatePromise = field.monitorCanceledState();
-			AJAXFIELDS.cancelAllActiveOrPending();
+			Ajaxfields.cancelAllActiveOrPending();
 			field.hideDisplay();
 			field.showLoading();
 			field.setState(AJAXFIELDS_STATE_PENDING_ACTIVE);
@@ -988,7 +988,7 @@
 				obj.css('white-space', 'pre-wrap');
 			}
 			if (field.isToggle()){
-				var toggleElem = AJAXFIELDS.getToggleElem();
+				var toggleElem = Ajaxfields.getToggleElem();
 				obj.append(toggleElem);
 				obj.css('display', 'inline-block');
 				obj.css('vertical-align', 'top');
@@ -1002,7 +1002,7 @@
 				});
 			}
 			if (field.isPassword()){
-				obj.text(AJAXFIELDS._passwordString);
+				obj.text(Ajaxfields._passwordString);
 			}
 			field.setState(AJAXFIELDS_STATE_READY);
 			this._callback.ready(this);
@@ -1014,11 +1014,11 @@
 		var elems = $('[data-ajaxfield]');
 		elems.each(function(){
 			var elem = $(this);
-			var fieldData = AJAXFIELDS.gatherData(elem);
-			new AJAXFIELDS.field(elem, fieldData);
+			var fieldData = Ajaxfields.gatherData(elem);
+			new Ajaxfields.field(elem, fieldData);
 		});
 	});
 	
-	return AJAXFIELDS;
+	return Ajaxfields;
 
 })));
