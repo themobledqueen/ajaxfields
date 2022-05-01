@@ -45,7 +45,7 @@ Defines the type of a field. Ajaxfields supports several:
 | Password | "password", "p" | Creates an `<input type="password"/>` element on click. Also hides the text-value of a field in un-activated state (assuming no one in their right mind would store, let alone send, passwords in plain-text). |
 | Select | "select", "s" | Creates a `<select/>` element on click. Expects available options to be provided in options property. |
 | Date | "date", "d" | Creates an `<input type="date"/>` element on click. |
-| Datetime | "datetime", "dt" | Creates an <input type="datetime-local"/> element on click. |
+| Datetime | "datetime", "dt" | Creates an `<input type="datetime-local"/>` element on click. |
 | Time | "time" | Creates an `<input type="time"/>` element on click. |
 | Toggle | "toggle", "tog" |Creates a custom `<div class="ajaxfield_toggle"/>` element, that toggles the value between "0" and "1" on click. |
 
