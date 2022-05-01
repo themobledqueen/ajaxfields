@@ -2,6 +2,9 @@
 **Ajaxfields.js** is a simple Javascript plugin that allows you to turn basic DOM elements into editable input fields.
 Initialized fields are activated by a mouse click. The entered value is then sent through an ajax-request and upon its completion the displayed value updates accordingly.
 
+## Demo
+Demo can be found at https://themobledqueen.github.io/ajaxfields.js/
+
 ## Requirements
 jQuery
 
@@ -28,9 +31,6 @@ Or via data-attributes
 ```html
 <div class="foo" data-ajaxfield >bar</div>
 ```
-
-## Demo
-Demo can be found at https://themobledqueen.github.io/ajaxfields.js/
 
 ## Options
 
